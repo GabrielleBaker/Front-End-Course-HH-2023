@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Todolist(props){
+    const{todos,delRow}=props;
     return(
         <div>
             <table>
@@ -9,11 +10,13 @@ export default function Todolist(props){
                 <th>Date</th>
                 <th>Description</th>
                 </tr>
-                {
-                props.todos.map((todo,index)=>
+                {todos.map((todo,index)=>
                     <tr key={index}>
                     <td>{todo.date}</td>
                     <td>{todo.desc}</td>
+                    <td><button onClick={
+                    ()=> {delRow(index)}
+                }>Delete</button></td>
                 </tr>
             )
             }

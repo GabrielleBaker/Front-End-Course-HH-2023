@@ -14,6 +14,12 @@ function App() {
     event.preventDefault();
     setTodos([...todos,todo]);
   }
+  const deleteTodo =(i) => {
+    let copy = [...todos]
+    copy = copy.filter((todo, index) => i !== index);
+    setTodos(copy);
+}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -31,8 +37,8 @@ function App() {
         <input type="text" name ="desc" value={todo.desc} onChange={inputChanged}/>
         <input type="submit" value="Add"/>
       </form>
-      <Todotable todos={todos} />
-  
+      <Todotable todos={todos} delRow={deleteTodo}/>
+    
     </div>
   );
 }
